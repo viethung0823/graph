@@ -55,7 +55,7 @@ export default config;
 
 ```typescript
 // quartz.layout.ts
-import { Graph } from "@quartz-community/graph/components";
+import { Graph } from "@quartz-community/graph";
 
 // Create the Graph component once and reuse it across layouts
 const graphComponent = Graph({
