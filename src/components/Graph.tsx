@@ -14,12 +14,6 @@ type GlobalConfiguration = {
   [key: string]: any;
 };
 
-type QuartzConfig = {
-  configuration: GlobalConfiguration;
-  plugins: any;
-  externalPlugins?: any[];
-};
-
 type QuartzPluginData = {
   slug: string;
   title: string;
@@ -28,8 +22,8 @@ type QuartzPluginData = {
 };
 
 type BuildCtx = {
-  cfg: QuartzConfig;
-  allFiles: QuartzPluginData[];
+  cfg: any;
+  allFiles: any[];
   [key: string]: any;
 };
 
@@ -42,10 +36,10 @@ export type QuartzComponentProps = {
   ctx: BuildCtx;
   externalResources: StaticResources;
   fileData: QuartzPluginData;
-  cfg: GlobalConfiguration;
+  cfg: any;
   children: any[];
   tree: any;
-  allFiles: QuartzPluginData[];
+  allFiles: any[];
   displayClass?: "mobile-only" | "desktop-only";
 } & JSX.IntrinsicAttributes & {
     [key: string]: any;
