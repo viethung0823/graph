@@ -20,7 +20,7 @@ export type QuartzComponent = ((props: QuartzComponentProps) => VNode) & {
 };
 
 export type QuartzComponentConstructor<Options extends object | undefined = undefined> = (
-  opts: Options,
+  opts?: Options,
 ) => QuartzComponent;
 
 export interface D3Config {
