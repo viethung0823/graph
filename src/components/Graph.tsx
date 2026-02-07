@@ -1,22 +1,36 @@
 import type { VNode, JSX } from "preact";
 
 type GlobalConfiguration = {
-  locale: string;
+  pageTitle: string;
+  pageTitleSuffix?: string;
+  enableSPA: boolean;
+  enablePopovers: boolean;
+  analytics: any;
+  ignorePatterns: string[];
+  defaultDateType: string;
   baseUrl?: string;
-  [key: string]: unknown;
+  theme: any;
+  locale: string;
+  [key: string]: any;
+};
+
+type QuartzConfig = {
+  configuration: GlobalConfiguration;
+  plugins: any;
+  externalPlugins?: string[];
 };
 
 type QuartzPluginData = {
   slug: string;
   title: string;
   filePath: string;
-  [key: string]: unknown;
+  [key: string]: any;
 };
 
 type BuildCtx = {
-  cfg: GlobalConfiguration;
+  cfg: QuartzConfig;
   allFiles: QuartzPluginData[];
-  [key: string]: unknown;
+  [key: string]: any;
 };
 
 type StaticResources = {
@@ -29,12 +43,12 @@ export type QuartzComponentProps = {
   externalResources: StaticResources;
   fileData: QuartzPluginData;
   cfg: GlobalConfiguration;
-  children: VNode[];
-  tree: unknown;
+  children: any[];
+  tree: any;
   allFiles: QuartzPluginData[];
   displayClass?: "mobile-only" | "desktop-only";
 } & JSX.IntrinsicAttributes & {
-    [key: string]: unknown;
+    [key: string]: any;
   };
 
 export type QuartzComponent = ((props: QuartzComponentProps) => VNode) & {
