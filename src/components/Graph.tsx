@@ -2,14 +2,33 @@ import type {
   QuartzComponent,
   QuartzComponentConstructor,
   QuartzComponentProps,
-  D3Config,
-  GraphOptions,
 } from "@quartz-community/types";
 import { classNames } from "../util/lang";
 import { i18n } from "../i18n";
 import style from "./styles/graph.scss";
 // @ts-ignore
 import script from "./scripts/graph.inline.ts";
+
+export interface D3Config {
+  drag: boolean;
+  zoom: boolean;
+  depth: number;
+  scale: number;
+  repelForce: number;
+  centerForce: number;
+  linkDistance: number;
+  fontSize: number;
+  opacityScale: number;
+  removeTags: string[];
+  showTags: boolean;
+  focusOnHover?: boolean;
+  enableRadial?: boolean;
+}
+
+export interface GraphOptions {
+  localGraph?: Partial<D3Config>;
+  globalGraph?: Partial<D3Config>;
+}
 
 const defaultOptions: GraphOptions = {
   localGraph: {
@@ -93,5 +112,3 @@ export default ((userOpts?: Partial<GraphOptions>) => {
 
   return Graph;
 }) satisfies QuartzComponentConstructor;
-
-export type { GraphOptions, D3Config };
