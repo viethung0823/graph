@@ -19,7 +19,7 @@ import {
 
   Promise.all([
     loadScript("https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"),
-    loadScript("https://cdn.jsdelivr.net/npm/pixi.js@8/dist/pixi.min.js"),
+    loadScript("https://cdn.jsdelivr.net/npm/pixi.js@8/dist/pixi.js"),
   ])
     .then(function () {
       initGraph();
