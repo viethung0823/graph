@@ -49,11 +49,16 @@ import {
       localStorage.setItem(localStorageKey, JSON.stringify(Array.from(visited)));
     }
 
-    async function renderGraph(graph, fullSlug) {
+    async function renderGraph(graph, fullSlug, renderGeneration) {
       var slug = simplifySlug(fullSlug);
       if (slug === "") slug = "index";
       var visited = getVisited();
       removeAllChildren(graph);
+
+      if (renderGeneration !== undefined && renderGeneration !== currentRenderGeneration) {
+        console.log("[Graph] Stale render, skipping");
+        return function () {};
+      }
 
       var config = JSON.parse(graph.dataset["cfg"] || "{}");
       var enableDrag = config.drag;
@@ -581,6 +586,7 @@ import {
 
     var localCleanups = [];
     var globalCleanups = [];
+    var currentRenderGeneration = 0;
 
     function cleanupLocal() {
       for (var i = 0; i < localCleanups.length; i++) {
@@ -636,7 +642,7 @@ import {
         var graphContainer = container.querySelector(".global-graph-container");
         if (graphContainer) {
           (function (gc) {
-            renderGraph(gc, currentSlug)
+            renderGraph(gc, currentSlug, undefined)
               .then(function (cleanup) {
                 globalCleanups.push(cleanup);
               })
@@ -658,15 +664,18 @@ import {
 
     function renderLocal() {
       cleanupLocal();
+      var thisGeneration = ++currentRenderGeneration;
       var slug = getFullSlugFromUrl();
       addToVisited(slug);
 
       var localContainers = document.querySelectorAll(".graph-container");
       for (var i = 0; i < localContainers.length; i++) {
         (function (container) {
-          renderGraph(container, slug)
+          renderGraph(container, slug, thisGeneration)
             .then(function (cleanup) {
-              localCleanups.push(cleanup);
+              if (thisGeneration === currentRenderGeneration) {
+                localCleanups.push(cleanup);
+              }
             })
             .catch(function (err) {
               console.error("[Graph] Local render error:", err);
