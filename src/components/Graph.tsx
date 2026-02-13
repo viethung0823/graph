@@ -70,7 +70,7 @@ export default ((userOpts?: Partial<GraphOptions>) => {
 
     return (
       <div class={classNames(displayClass, "graph")}>
-        <h3>{i18n(cfg.locale).components.graph.title}</h3>
+        <h3>{i18n(cfg.locale ?? "en-US").components.graph.title}</h3>
         <div class="graph-outer">
           <div class="graph-container" data-cfg={JSON.stringify(localGraph)}></div>
           <button class="global-graph-icon" aria-label="Global Graph">
