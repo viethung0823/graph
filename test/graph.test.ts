@@ -40,4 +40,3 @@ describe("Graph Component", () => {
     expect(typeof component.afterDOMLoaded).toBe("string");
   });
 });
-
