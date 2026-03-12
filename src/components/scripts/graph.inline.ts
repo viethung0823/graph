@@ -751,5 +751,6 @@ import {
       handleNav({ detail: { url: getFullSlugFromUrl() } });
     }
     document.addEventListener("nav", handleNav);
+    document.addEventListener("render", handleNav);
   }
 })();
