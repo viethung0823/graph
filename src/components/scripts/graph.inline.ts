@@ -1,12 +1,23 @@
 // @ts-nocheck
 import {
   removeAllChildren,
+  getBasePath,
   getFullSlugFromUrl,
   simplifySlug,
   resolveBasePath,
 } from "@quartz-community/utils";
 
 (function () {
+  function getSlugFromUrl() {
+    var slug = getFullSlugFromUrl();
+    var base = getBasePath();
+    if (base && slug.startsWith(base.replace(/^\//, ""))) {
+      slug = slug.slice(base.replace(/^\//, "").length);
+      if (slug.startsWith("/")) slug = slug.slice(1);
+    }
+    return slug;
+  }
+
   function loadScript(src) {
     return new Promise(function (resolve, reject) {
       var script = document.createElement("script");
@@ -579,7 +590,13 @@ import {
       return function () {
         stopAnimation = true;
         simulation.stop();
-        app.destroy(true);
+        try {
+          app.destroy(true);
+        } catch (e) {
+          // PixiJS may throw if WebGL context was already lost (e.g. during SPA navigation).
+          // Swallow the error so cleanup completes and the graph can re-render.
+          console.warn("[Graph] PixiJS destroy failed (WebGL context likely lost):", e);
+        }
       };
     }
 
@@ -629,7 +646,7 @@ import {
 
     function showGlobalGraph() {
       cleanupGlobal();
-      var currentSlug = getFullSlugFromUrl();
+      var currentSlug = getSlugFromUrl();
       for (var i = 0; i < globalContainers.length; i++) {
         var container = globalContainers[i];
         container.classList.add("active");
@@ -664,7 +681,7 @@ import {
     function renderLocal() {
       cleanupLocal();
       var thisGeneration = ++currentRenderGeneration;
-      var slug = getFullSlugFromUrl();
+      var slug = getSlugFromUrl();
       addToVisited(slug);
 
       var localContainers = document.querySelectorAll(".graph-container");
@@ -684,7 +701,7 @@ import {
     }
 
     function handleNav(e) {
-      var slug = e.detail ? e.detail.url : getFullSlugFromUrl();
+      var slug = e.detail ? e.detail.url : getSlugFromUrl();
       addToVisited(simplifySlug(slug));
 
       renderLocal();
@@ -744,10 +761,10 @@ import {
 
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", function () {
-        handleNav({ detail: { url: getFullSlugFromUrl() } });
+        handleNav({ detail: { url: getSlugFromUrl() } });
       });
     } else {
-      handleNav({ detail: { url: getFullSlugFromUrl() } });
+      handleNav({ detail: { url: getSlugFromUrl() } });
     }
     document.addEventListener("nav", handleNav);
     document.addEventListener("render", handleNav);
