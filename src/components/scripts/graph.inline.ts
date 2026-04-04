@@ -592,10 +592,8 @@ import {
         simulation.stop();
         try {
           app.destroy(true);
-        } catch (e) {
-          // PixiJS may throw if WebGL context was already lost (e.g. during SPA navigation).
-          // Swallow the error so cleanup completes and the graph can re-render.
-          console.warn("[Graph] PixiJS destroy failed (WebGL context likely lost):", e);
+        } catch (_) {
+          // PixiJS may throw if WebGL context was already lost.
         }
       };
     }
@@ -766,6 +764,10 @@ import {
     } else {
       handleNav({ detail: { url: getSlugFromUrl() } });
     }
+    document.addEventListener("prenav", function () {
+      cleanupLocal();
+      cleanupGlobal();
+    });
     document.addEventListener("nav", handleNav);
     document.addEventListener("render", handleNav);
   }
