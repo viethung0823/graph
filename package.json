@@ -94,12 +94,51 @@
     "dependencies": [],
     "defaultOrder": 50,
     "defaultEnabled": true,
-    "defaultOptions": {},
+    "defaultOptions": {
+      "localGraph": {
+        "drag": true,
+        "zoom": true,
+        "depth": 1,
+        "scale": 1.1,
+        "repelForce": 0.5,
+        "centerForce": 0.3,
+        "linkDistance": 30,
+        "fontSize": 0.6,
+        "opacityScale": 1,
+        "showTags": true,
+        "removeTags": [],
+        "focusOnHover": false,
+        "enableRadial": false
+      },
+      "globalGraph": {
+        "drag": true,
+        "zoom": true,
+        "depth": -1,
+        "scale": 0.9,
+        "repelForce": 0.5,
+        "centerForce": 0.2,
+        "linkDistance": 30,
+        "fontSize": 0.6,
+        "opacityScale": 1,
+        "showTags": true,
+        "removeTags": [],
+        "focusOnHover": true,
+        "enableRadial": true
+      }
+    },
     "components": {
       "Graph": {
         "displayName": "Graph",
         "defaultPosition": "right",
         "defaultPriority": 10
+      }
+    },
+    "optionSchema": {
+      "localGraph": {
+        "type": "object"
+      },
+      "globalGraph": {
+        "type": "object"
       }
     }
   },
