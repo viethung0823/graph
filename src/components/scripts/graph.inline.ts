@@ -37,6 +37,15 @@ import {
     })
     .catch(function (err) {
       console.error("[Graph] Failed to load libraries:", err);
+      var containers = document.querySelectorAll(".graph-container");
+      for (var i = 0; i < containers.length; i++) {
+        containers[i].textContent = "Graph could not load. Check your network connection.";
+        containers[i].style.display = "flex";
+        containers[i].style.alignItems = "center";
+        containers[i].style.justifyContent = "center";
+        containers[i].style.color = "var(--gray)";
+        containers[i].style.fontSize = "0.9rem";
+      }
     });
 
   function initGraph() {
