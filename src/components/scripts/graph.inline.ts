@@ -796,5 +796,13 @@ import {
     });
     document.addEventListener("nav", handleNav);
     document.addEventListener("render", handleNav);
+
+    function handleThemeChange() {
+      renderLocal();
+      if (anyGlobalGraphActive()) {
+        showGlobalGraph();
+      }
+    }
+    document.addEventListener("themechange", handleThemeChange);
   }
 })();
