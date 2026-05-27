@@ -12,9 +12,299 @@ var en_US_default = {
   }
 };
 
+// src/i18n/locales/en-GB.ts
+var en_GB_default = {
+  components: {
+    graph: {
+      title: "Graph View"
+    }
+  }
+};
+
+// src/i18n/locales/ar-SA.ts
+var ar_SA_default = {
+  components: {
+    graph: {
+      title: "\u0627\u0644\u062A\u0645\u062B\u064A\u0644 \u0627\u0644\u062A\u0641\u0627\u0639\u0644\u064A"
+    }
+  }
+};
+
+// src/i18n/locales/ca-ES.ts
+var ca_ES_default = {
+  components: {
+    graph: {
+      title: "Vista Gr\xE0fica"
+    }
+  }
+};
+
+// src/i18n/locales/cs-CZ.ts
+var cs_CZ_default = {
+  components: {
+    graph: {
+      title: "Graf"
+    }
+  }
+};
+
+// src/i18n/locales/de-DE.ts
+var de_DE_default = {
+  components: {
+    graph: {
+      title: "Graphansicht"
+    }
+  }
+};
+
+// src/i18n/locales/es-ES.ts
+var es_ES_default = {
+  components: {
+    graph: {
+      title: "Vista Gr\xE1fica"
+    }
+  }
+};
+
+// src/i18n/locales/fa-IR.ts
+var fa_IR_default = {
+  components: {
+    graph: {
+      title: "\u0646\u0645\u0627\u06CC \u06AF\u0631\u0627\u0641"
+    }
+  }
+};
+
+// src/i18n/locales/fi-FI.ts
+var fi_FI_default = {
+  components: {
+    graph: {
+      title: "Verkkon\xE4kym\xE4"
+    }
+  }
+};
+
+// src/i18n/locales/fr-FR.ts
+var fr_FR_default = {
+  components: {
+    graph: {
+      title: "Vue Graphique"
+    }
+  }
+};
+
+// src/i18n/locales/he-IL.ts
+var he_IL_default = {
+  components: {
+    graph: {
+      title: "\u05DE\u05D1\u05D8 \u05D2\u05E8\u05E3"
+    }
+  }
+};
+
+// src/i18n/locales/hu-HU.ts
+var hu_HU_default = {
+  components: {
+    graph: {
+      title: "Grafikonn\xE9zet"
+    }
+  }
+};
+
+// src/i18n/locales/id-ID.ts
+var id_ID_default = {
+  components: {
+    graph: {
+      title: "Tampilan Grafik"
+    }
+  }
+};
+
+// src/i18n/locales/it-IT.ts
+var it_IT_default = {
+  components: {
+    graph: {
+      title: "Vista grafico"
+    }
+  }
+};
+
+// src/i18n/locales/ja-JP.ts
+var ja_JP_default = {
+  components: {
+    graph: {
+      title: "\u30B0\u30E9\u30D5\u30D3\u30E5\u30FC"
+    }
+  }
+};
+
+// src/i18n/locales/kk-KZ.ts
+var kk_KZ_default = {
+  components: {
+    graph: {
+      title: "\u0413\u0440\u0430\u0444 \u043A\u04E9\u0440\u0456\u043D\u0456\u0441\u0456"
+    }
+  }
+};
+
+// src/i18n/locales/ko-KR.ts
+var ko_KR_default = {
+  components: {
+    graph: {
+      title: "\uADF8\uB798\uD504 \uBDF0"
+    }
+  }
+};
+
+// src/i18n/locales/lt-LT.ts
+var lt_LT_default = {
+  components: {
+    graph: {
+      title: "Grafiko Vaizdas"
+    }
+  }
+};
+
+// src/i18n/locales/nb-NO.ts
+var nb_NO_default = {
+  components: {
+    graph: {
+      title: "Graf-visning"
+    }
+  }
+};
+
+// src/i18n/locales/nl-NL.ts
+var nl_NL_default = {
+  components: {
+    graph: {
+      title: "Grafiekweergave"
+    }
+  }
+};
+
+// src/i18n/locales/pl-PL.ts
+var pl_PL_default = {
+  components: {
+    graph: {
+      title: "Graf"
+    }
+  }
+};
+
+// src/i18n/locales/pt-BR.ts
+var pt_BR_default = {
+  components: {
+    graph: {
+      title: "Vis\xE3o de gr\xE1fico"
+    }
+  }
+};
+
+// src/i18n/locales/ro-RO.ts
+var ro_RO_default = {
+  components: {
+    graph: {
+      title: "Graf"
+    }
+  }
+};
+
+// src/i18n/locales/ru-RU.ts
+var ru_RU_default = {
+  components: {
+    graph: {
+      title: "\u0412\u0438\u0434 \u0433\u0440\u0430\u0444\u0430"
+    }
+  }
+};
+
+// src/i18n/locales/th-TH.ts
+var th_TH_default = {
+  components: {
+    graph: {
+      title: "\u0E21\u0E38\u0E21\u0E21\u0E2D\u0E07\u0E01\u0E23\u0E32\u0E1F"
+    }
+  }
+};
+
+// src/i18n/locales/tr-TR.ts
+var tr_TR_default = {
+  components: {
+    graph: {
+      title: "Grafik G\xF6r\xFCn\xFCm\xFC"
+    }
+  }
+};
+
+// src/i18n/locales/uk-UA.ts
+var uk_UA_default = {
+  components: {
+    graph: {
+      title: "\u0412\u0438\u0433\u043B\u044F\u0434 \u0433\u0440\u0430\u0444\u0430"
+    }
+  }
+};
+
+// src/i18n/locales/vi-VN.ts
+var vi_VN_default = {
+  components: {
+    graph: {
+      title: "S\u01A1 \u0111\u1ED3"
+    }
+  }
+};
+
+// src/i18n/locales/zh-CN.ts
+var zh_CN_default = {
+  components: {
+    graph: {
+      title: "\u5173\u7CFB\u56FE\u8C31"
+    }
+  }
+};
+
+// src/i18n/locales/zh-TW.ts
+var zh_TW_default = {
+  components: {
+    graph: {
+      title: "\u95DC\u4FC2\u5716\u8B5C"
+    }
+  }
+};
+
 // src/i18n/index.ts
 var locales = {
-  "en-US": en_US_default
+  "en-US": en_US_default,
+  "en-GB": en_GB_default,
+  "ar-SA": ar_SA_default,
+  "ca-ES": ca_ES_default,
+  "cs-CZ": cs_CZ_default,
+  "de-DE": de_DE_default,
+  "es-ES": es_ES_default,
+  "fa-IR": fa_IR_default,
+  "fi-FI": fi_FI_default,
+  "fr-FR": fr_FR_default,
+  "he-IL": he_IL_default,
+  "hu-HU": hu_HU_default,
+  "id-ID": id_ID_default,
+  "it-IT": it_IT_default,
+  "ja-JP": ja_JP_default,
+  "kk-KZ": kk_KZ_default,
+  "ko-KR": ko_KR_default,
+  "lt-LT": lt_LT_default,
+  "nb-NO": nb_NO_default,
+  "nl-NL": nl_NL_default,
+  "pl-PL": pl_PL_default,
+  "pt-BR": pt_BR_default,
+  "ro-RO": ro_RO_default,
+  "ru-RU": ru_RU_default,
+  "th-TH": th_TH_default,
+  "tr-TR": tr_TR_default,
+  "uk-UA": uk_UA_default,
+  "vi-VN": vi_VN_default,
+  "zh-CN": zh_CN_default,
+  "zh-TW": zh_TW_default
 };
 function i18n(locale) {
   return locales[locale] || en_US_default;
