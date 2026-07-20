@@ -732,14 +732,18 @@ import {
   // opened by definition. Instead each container gets its own
   // IntersectionObserver: the render (and, the first time anywhere on the
   // page, the d3/pixi.js load behind it) is deferred until that particular
-  // container is about to actually be seen. rootMargin gives it a 200px
-  // head start so it's ready by the time it's actually scrolled into view
-  // rather than flashing an empty box first; a container already on screen
-  // when the observer is created (the common case — e.g. the desktop
-  // sidebar copy) fires essentially immediately, so visible behavior is
-  // unchanged there. What changes is a below-the-fold copy (e.g. the mobile
-  // afterBody one, sitting under the whole article) no longer costs
-  // anything until scrolled to — most page visits never will.
+  // container actually enters the viewport. rootMargin is deliberately 0,
+  // not a generous head start: pixi.js + d3 together are ~500KB over the
+  // network, and Lighthouse showed that firing this fetch even ~200px early
+  // was enough to still start it during initial page load on ordinary
+  // (short-to-medium) pages, competing with the page's own critical
+  // resources for bandwidth on a throttled connection. A container already
+  // on screen when the observer is created (e.g. the desktop sidebar copy)
+  // still fires essentially immediately, so visible behavior there is
+  // unchanged — this only holds off a copy that's genuinely offscreen (e.g.
+  // the mobile afterBody one, sitting under the whole article) until it's
+  // actually about to be seen, trading a few extra ms of visible "empty box"
+  // on a fast scroll for not competing with first paint at all.
   function observeContainers(containers, slug, generation) {
     if (localContainerObserver) {
       localContainerObserver.disconnect();
@@ -767,7 +771,7 @@ import {
             });
         }
       },
-      { rootMargin: "200px" },
+      { rootMargin: "0px" },
     );
     for (var i = 0; i < containers.length; i++) {
       localContainerObserver.observe(containers[i]);
