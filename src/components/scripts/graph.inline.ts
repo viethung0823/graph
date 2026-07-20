@@ -500,6 +500,7 @@ import {
 
       var dragStarted = function (event) {
         if (!event.active) simulation.alphaTarget(1).restart();
+        wakeAnimation();
         event.subject.fx = event.subject.x;
         event.subject.fy = event.subject.y;
         var mouseSimX = (event.x - currentTransform.x) / currentTransform.k - width / 2;
@@ -591,7 +592,18 @@ import {
     }
 
     var stopAnimation = false;
+    // Unconditionally rescheduling itself here used to mean every open
+    // graph — however small, however long ago its layout settled — redrew
+    // every node position and re-stroked every link's PIXI graphics 60
+    // times a second, forever, for as long as the page stayed open. d3's
+    // own alphaMin (default 0.001) is exactly the signal for "the
+    // simulation has stopped moving anything" — once alpha decays below
+    // it, positions are no longer changing, so stop redrawing them.
+    // Dragging a node (see dragStarted) reheats alpha via alphaTarget(1)
+    // and calls wakeAnimation() to resume the loop.
+    var animationScheduled = false;
     function animate() {
+      animationScheduled = false;
       if (stopAnimation) return;
 
       for (var i = 0; i < nodeRenderData.length; i++) {
@@ -621,7 +633,17 @@ import {
         }
       }
 
-      requestAnimationFrame(animate);
+      if (simulation.alpha() >= simulation.alphaMin()) {
+        animationScheduled = true;
+        requestAnimationFrame(animate);
+      }
+    }
+
+    function wakeAnimation() {
+      if (!animationScheduled && !stopAnimation) {
+        animationScheduled = true;
+        requestAnimationFrame(animate);
+      }
     }
 
     simulation.on("tick", function () {});
